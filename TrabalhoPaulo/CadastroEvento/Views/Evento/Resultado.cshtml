@@ -1,0 +1,55 @@
+@model CadastroEvento.ViewModels.EventoViewModel
+
+@{
+    ViewData["Title"] = "Resultado do Cadastro";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+
+@if (ViewData["Mensagem"] != null)
+{
+    <div class="alert alert-info" role="alert">
+        <strong>@ViewData["Mensagem"]</strong>
+    </div>
+}
+
+<h3>Dados do Evento Cadastrado:</h3>
+
+<div class="row">
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd class="col-sm-8">
+                @Model.Nome
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.NumeroParticipantes)
+            </dt>
+            <dd class="col-sm-8">
+                @Model.NumeroParticipantes
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Data)
+            </dt>
+            <dd class="col-sm-8">
+                @Model.Data.ToShortDateString()
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Ativo)
+            </dt>
+            <dd class="col-sm-8">
+                @(Model.Ativo ? "Sim" : "Não")
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<p>
+    <a asp-action="Create" asp-controller="Evento">Cadastrar Novo Evento</a>
+</p>
